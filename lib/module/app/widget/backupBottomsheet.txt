@@ -1,0 +1,82 @@
+SafeArea(
+          child: Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            color: bgColor,
+            child: Column(children: [
+              Expanded(
+                flex: 2,
+                child: Container(
+                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.03),
+                  color: Colors.transparent,
+                  child: Center(
+                    child: Text(
+                      "ISOJA",
+                      style: TextStyle(
+                        fontSize: 48,
+                        color: text,
+                        fontFamily: 'Aquire',
+                        shadows: [
+                          Shadow(
+                            blurRadius: 25.0,
+                            color: Colors.grey,
+                            offset: Offset(2, 2),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 7,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(40.0),
+                    child: Container(
+                      color: container,
+                      child: Column(children: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    indexNum = 0;
+                                  });
+                                },
+                                child: const Text("1")),
+                            TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    indexNum = 1;
+                                  });
+                                },
+                                child: const Text("0")),
+                            TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    indexNum = 2;
+                                  });
+                                },
+                                child: const Text("0")),
+                          ],
+                        ),
+                        IndexedStack(
+                          index: indexNum,
+                          children: <Widget>[
+                            Text('Child 1'),
+                            Text('Child 2'),
+                            Text('Child 3'),
+                          ],
+                        )
+                      ]),
+                    ),
+                  ),
+                ),
+              ),
+            ]),
+          ),
+        );
+}
